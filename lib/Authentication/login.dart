@@ -94,7 +94,8 @@ class Login extends StatelessWidget {
                   shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(80)),
                   padding: EdgeInsets.all(0),
                   onPressed: ()async{
-                    await update();
+                    if(controller1.text.toString() != '' && controller2.text.toString() != ''){
+                      await update();
                     if(status=='Internet Error' || status == 'Authentication Error' || status == '404' || status == null || status == 'Username or password is incorrect'){
                       
                       return showDialog(context: context,builder: (context){
@@ -141,6 +142,41 @@ class Login extends StatelessWidget {
                         'email' : email
                       };
                       Navigator.pushReplacementNamed(context, '/register1',arguments: data);
+                    }
+                    }
+                    else{
+                      showDialog(context: context,builder:(context){
+                        AlertDialog(
+                          title: Text(
+                            "Fields cannot be empty",
+                            style: TextStyle(
+                              color: Colors.blue,
+                            ),
+                          ),
+                          backgroundColor: Colors.lightBlueAccent,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          content: Text(
+                            "One or both of the username and password fields are empty",
+                            style: TextStyle(
+                              color: Colors.blue,
+                            ),
+                            ),
+                          actions: <Widget>[
+                            MaterialButton(onPressed: (){
+                              Navigator.popAndPushNamed(context, '/login');
+                            },
+                            child: Text(
+                              "Ok",
+                              style: TextStyle(
+                                color: Colors.blue,
+                              )
+                            ),
+                            )
+                          ],
+                        );
+                      } );
                     }
                   },
                   child: Ink(
@@ -224,7 +260,7 @@ class Login extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                onPressed: (){},
+                                onPressed: (){},    //TODO: Facebook Login Connection
                               ),
                             ),
                             SizedBox(width:30),
@@ -250,7 +286,7 @@ class Login extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              onPressed: (){},
+                              onPressed: (){},  //TODO: Twitter Login Connection
                             )
                           ],
                         ),
