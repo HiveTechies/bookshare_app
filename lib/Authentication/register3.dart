@@ -139,7 +139,7 @@ class _FinalSignupState extends State<FinalSignup> {
                         });
                         }
                         else{
-                          return showDialog(context: context,builder: (context) {
+                          showDialog(context: context,builder: (context) {
                             return AlertDialog(
                               backgroundColor: Colors.lightBlue,
                               shape: RoundedRectangleBorder(

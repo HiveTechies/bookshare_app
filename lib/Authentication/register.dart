@@ -74,7 +74,7 @@ class Register extends StatelessWidget {
                       ),
                       onPressed: (){
                         if(controller1.text.toString() == ''){
-                          return showDialog(context: context,builder: (context) {
+                          showDialog(context: context,builder: (context) {
                             return AlertDialog(
                               backgroundColor: Colors.lightBlueAccent,
                               shape: RoundedRectangleBorder(

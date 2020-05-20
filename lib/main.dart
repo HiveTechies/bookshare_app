@@ -4,9 +4,14 @@ import 'package:bookshare/Authentication/login.dart';
 import 'package:bookshare/Authentication/register1.dart';
 import 'package:bookshare/loading.dart';
 import 'package:bookshare/Authentication/register2.dart';
+import 'package:flutter/services.dart';
+
 void main() {
-  runApp(MaterialApp(
-    initialRoute: '/register',
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown])
+    .then((_) {
+      runApp(MaterialApp(
+    initialRoute: '/login',
     routes: {
       '/register': (context) => Register(),
       '/login' : (context) => Login(),
@@ -16,4 +21,6 @@ void main() {
     },
   )
   );
+    });
+  
 }
